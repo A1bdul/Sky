@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from Site.forms import AjaxSavePhoto, AjaxPhotoFeed
-from Site.models import Photo, Post
+from Site.models import Photo, Post, Comment
 
 
 def home(request):
@@ -21,3 +21,4 @@ def ajaxphotofeed(request):
     ajax = AjaxPhotoFeed(request.GET, request.user)
     context = {'ajax_output': ajax.output()}
     return render(request, 'ajax.html', context)
+

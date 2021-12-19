@@ -6,7 +6,6 @@ from django.utils import timezone
 
 # Create your models here.
 
-
 class Photo(models.Model):
     baseurl = models.CharField(max_length=255)
     url = models.CharField(max_length=255)
@@ -38,7 +37,7 @@ class Post:
 
 class Owner(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_pic = models.CharField(max_length=100)
+    profile_pic = models.CharField(max_length=100, default="")
 
 
 

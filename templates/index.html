@@ -837,7 +837,7 @@
 			</form>
 		</div>
 <div class="overlay"></div>
-<div class="container img-container" ]>
+<div class="container img-container">
     <form id="upload">
         {% csrf_token %}
             <div id="upload-div" style="display: none; margin-top:7rem;">
@@ -901,8 +901,7 @@
 
 <!-- side panel -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src={% static "js/django-ajax.js" %}></script>
-<script src="/static/js/scripts.js"></script>
+    <script src="/static/js/scripts.js"></script>
     <script src="https://ucarecdn.com/libs/widget/3.0.0/uploadcare.min.js" charset="utf-8"></script>
 	    <script src="/static/js/main.min.js"></script>
     <script type="text/javascript">
@@ -918,7 +917,7 @@
                                 r = JSON.parse(r)
                                 for (var i = 0; i < r.length; i++) {
                                         r[i].URL += '-/quality/lightest/'
-                                        $('#loadposts').append('<div class="img-div"><div class="header"><img class="img-circle" data-caption="'+r[i].Caption+'" src="'+r[i].ProfilePic+'"><label>/'+r[i].Owner+' </label></div><img style="max-height: 500px; min-height: 300px; background-color: rgb('+r[i].MainColour+')" src="'+r[i].URL+'"><div class="header"><a href="javascript:void(0)" class="likephoto" data-liked='+ r[i].Liked +' data-postid="'+r[i].PostID+'" data-likes="'+r[i].Likes+'"><i class="fa fa-heart-o"></i></a></div><div class="more-section"><label>'+r[i].Likes+' Likes</label><p><strong>/'+r[i].Owner+' </strong>'+r[i].Caption+'</p></div></div>')
+                                        $('#loadposts').append('{%include "post.html"%}')
                                 }
 
                                 $('.likephoto').each(function() {

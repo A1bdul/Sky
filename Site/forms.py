@@ -5,6 +5,7 @@ from urllib.request import urlopen
 import ssl
 from django import forms
 from django.contrib.auth.models import User
+
 from Site.models import Photo, Followers, Owner, Post
 
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -92,7 +93,6 @@ class AjaxPhotoFeed(Ajax):
 
         for item in Photo.objects.filter(owner__in=followerslist).order_by('-date_uploaded')[
                     int(self.start):int(self.start) + 3]:
-
             out.append(
                 {"PostID": item.id, "URL": item.url, "Caption": item.caption, "Owner": item.owner,
                  "DateUploaded": item.date_uploaded.strftime("%Y-%m-%d %H:%M:%S"),
